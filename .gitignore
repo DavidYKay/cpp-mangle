@@ -1,0 +1,12 @@
+.dub
+docs.json
+docs/
+*.exe
+*.o
+*.obj
+*.lst
+tags
+build/
+.gdb_history
+TAGS
+bazel-*

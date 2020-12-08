@@ -1,0 +1,28 @@
+#!/bin/bash
+
+export TARGET="//cpp:car"
+
+echo "===================="
+echo "Compile"
+echo "===================="
+echo ""
+
+#bazel build $TARGET
+bazel build -s --verbose_failures --cpu k8 --jobs 1 $TARGET
+#bazel build -s --verbose_failures --cpu k8 --cxxopt='-std=c++98' $TARGET
+#bazel build -s --verbose_failures --cpu k8 --cxxopt='-std=c++17' $TARGET
+#bazel build --jobs 1 --cpu k8 $TARGET
+
+if [ $? -eq 0 ]; then
+  echo "===================="
+  echo "Run"
+  echo "===================="
+  echo ""
+  #bazel run --cpu k8 $TARGET
+  nm /home/dk/workspace/example/mangle/bazel-out/k8-fastbuild/bin/cpp/libcar.a
+else
+  #RED='\033[0;31m'
+  NC='\033[0m' # No Color
+  echo ""
+  printf "${RED}^^^^^^\nCompiler Error${NC}\n"
+fi

@@ -1,0 +1,4 @@
+#build --cxxopt=-fabi-version=2
+#build --cxxopt=-fabi-version=6
+#build --cxxopt=-std=c++17
+#build --cxxopt=-std=c++98
